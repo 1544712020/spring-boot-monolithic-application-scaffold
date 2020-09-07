@@ -18,7 +18,3 @@
 |Druid   |  数据库连接池 |
 | PageHelper	  | MyBatis物理分页插件  |
 | Swagger-UI	 | 文档生产工具 |
-
-
-
-
