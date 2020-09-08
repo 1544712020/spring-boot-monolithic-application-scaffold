@@ -27,4 +27,6 @@ mybatis:
 
 # 配置日志输出信息级别
 logging:
-  level: info
+  level:
+    org.springframework:
+      info
