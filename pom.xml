@@ -16,6 +16,12 @@
     </properties>
 
     <dependencies>
+
+        <!--
+        starter主要为第三方库提供自动配置：
+            它先打包好与常用模块相关的所有jar包，并完成自动配置，然后组装成starter
+        -->
+        <!-- 此脚手架是web项目所以需要引入Web的starter(也就是Web相关的容器、MVC的jar) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
