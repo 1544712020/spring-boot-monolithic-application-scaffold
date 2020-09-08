@@ -10,6 +10,7 @@
 |  SpringSecurity | 认证和授权框架|
 | MyBatis  |  ORM框架 |
 |MyBatisPlus     |  MyBatis的增强工具  |
+| MySQL  |  数据库 |
 | Redis  |  分布式缓存 |
 | RabbitMQ  | 消息队列  |
 | Elasticsearch  |  搜索引擎 |
