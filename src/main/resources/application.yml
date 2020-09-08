@@ -19,11 +19,12 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql:///security?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=Asia/ShangHai
+    url: jdbc:mysql:///security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 
 # 配置mybatis
 mybatis:
   config-location: classpath:/mybatis-config.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
 
 # 配置日志输出信息级别
 logging:

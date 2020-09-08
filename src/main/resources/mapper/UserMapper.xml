@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.lwz.scaffold.dao.UserMapper">
+<mapper namespace="com.lwz.scaffold.dao.UserMapper">
 
-    <resultMap id="UserResultMap" type="cn.lwz.scaffold.entity.User">
+    <resultMap id="UserResultMap" type="com.lwz.scaffold.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -10,7 +10,7 @@
         <result column="account_non_locked" property="accountNonLocked1"/>
         <result column="credentials_non_expired" property="credentialsNonExpired1"/>
         <result column="enabled" property="enabled1"/>
-        <collection property="roles" ofType="cn.lwz.scaffold.entity.Role">
+        <collection property="roles" ofType="com.lwz.scaffold.entity.Role">
             <id column="id" property="id"/>
             <result column="name" property="name" />
             <result column="name_zh" property="nameZh"/>
@@ -27,14 +27,14 @@
         </choose>
     </select>
 
-    <insert id="addUser" parameterType="cn.lwz.scaffold.entity.User" keyProperty="id" useGeneratedKeys="true">
+    <insert id="addUser" parameterType="com.lwz.scaffold.entity.User" keyProperty="id" useGeneratedKeys="true">
         insert into security.user set username = #{username},
         password = #{password}, account_non_expired = #{accountNonExpired1},
         account_non_locked = #{accountNonLocked1}, credentials_non_expired = #{credentialsNonExpired1},
         enabled = #{enabled1}
     </insert>
 
-    <select id="findAll" resultType="cn.lwz.scaffold.entity.User">
+    <select id="findAll" resultType="com.lwz.scaffold.entity.User">
         select * from security.user
     </select>
 

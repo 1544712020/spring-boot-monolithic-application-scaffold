@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.lwz.scaffold.dao.RoleMapper">
+<mapper namespace="com.lwz.scaffold.dao.RoleMapper">
     
     <insert id="addUserRole">
         insert into security.user_role values
@@ -9,11 +9,11 @@
         </foreach>
     </insert>
 
-    <insert id="addRoles" parameterType="cn.lwz.scaffold.entity.Role">
+    <insert id="addRoles" parameterType="com.lwz.scaffold.entity.Role">
         insert into security.role set name = #{name}, name_zh = #{nameZh}
     </insert>
 
-    <select id="getRolesByUid" resultType="cn.lwz.scaffold.entity.Role">
+    <select id="getRolesByUid" resultType="com.lwz.scaffold.entity.Role">
         select r.* from role r, user_role ru where r.id = ru.role_id and ru.user_id = #{uid}
     </select>
 
