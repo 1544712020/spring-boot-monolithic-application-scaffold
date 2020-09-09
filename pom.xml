@@ -34,11 +34,30 @@
             <version>2.1.2</version>
         </dependency>
 
+        <!-- 依赖mybatis-plus依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+
         <!-- 引入MySQL依赖 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- 引入数据库连接池依赖 -->
+        <!--
+            数据库连接池的基本思想就是为数据库连接建立一个“缓冲池”。
+            预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，
+            只需从“缓冲池”中取出一个，使用完毕之后再放回去。
+        -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.10</version>
         </dependency>
 
         <!-- 引入Lombok工具依赖 -->
