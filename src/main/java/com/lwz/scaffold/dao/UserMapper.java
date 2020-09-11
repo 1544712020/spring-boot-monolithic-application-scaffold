@@ -1,5 +1,6 @@
 package com.lwz.scaffold.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lwz.scaffold.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -7,12 +8,13 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
+ * Mapper接口类要继承BaseMapper
  * @author Lw中
  * @date 2020/8/26 13:24
  */
 
 @Mapper
-public interface UserMapper {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 通过名字查询用户名称

@@ -12,10 +12,10 @@ import java.util.List;
 
 /**
  * @author Lw中
- * @date 2020/9/2 11:15
+ * @date 2020/9/11 17:44
  */
 
-@Service("userService")
+@Service
 public class UserService {
 
     @Autowired
