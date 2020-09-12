@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * PageHelper插件配置
  * @author Lw中
  * @date 2020/9/11 19:48
  */

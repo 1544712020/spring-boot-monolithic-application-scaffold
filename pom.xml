@@ -34,7 +34,7 @@
             <version>2.1.2</version>
         </dependency>
 
-        <!-- 依赖mybatis-plus依赖 -->
+        <!-- 引入mybatis-plus依赖 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -67,11 +67,17 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 添加分页插件依赖 -->
+        <!-- 引入分页插件依赖 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
+        </dependency>
+
+        <!-- 引入安全验证框架依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
