@@ -1,33 +1,33 @@
-# SpringBoot支持两种配置方式：properties和yml
-# 两种配置方式的优先级：properties > yml
-
-# yml文件的好处是它采用的是树状结构，一目了然，不过其不支持用注解@PropertySource导入配置
-
-# 应用服务 WEB 访问端口
-server:
-  port: 8080
-# servlet中的session过期时间
-  servlet:
-    session:
-      timeout: 30
-# tomcat资源标识符字符编码格式
-  tomcat:
-    uri-encoding: UTF-8
-
-# 配置数据库
-spring:
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql:///security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-
-# 配置mybatis
-mybatis:
-  config-location: classpath:/mybatis-config.xml
-  mapper-locations: classpath:mapper/*Mapper.xml
-
-# 配置日志输出信息级别
-logging:
-  level:
-    org.springframework:
-      info
+## SpringBoot支持两种配置方式：properties和yml
+## 两种配置方式的优先级：properties > yml
+#
+## yml文件的好处是它采用的是树状结构，一目了然，不过其不支持用注解@PropertySource导入配置
+#
+## 应用服务 WEB 访问端口
+#server:
+#  port: 8080
+## servlet中的session过期时间
+#  servlet:
+#    session:
+#      timeout: 30
+## tomcat资源标识符字符编码格式
+#  tomcat:
+#    uri-encoding: UTF-8
+#
+## 配置数据库
+#spring:
+#  datasource:
+#    username: root
+#    password: root
+#    url: jdbc:mysql:///security?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#
+## 配置mybatis
+#mybatis:
+#  config-location: classpath:/mybatis-config.xml
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#
+## 配置日志输出信息级别
+#logging:
+#  level:
+#    org.springframework:
+#      info
