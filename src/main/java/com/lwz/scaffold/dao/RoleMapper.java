@@ -1,7 +1,7 @@
 package com.lwz.scaffold.dao;
 
 
-//import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lwz.scaffold.entity.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Mapper
-public interface RoleMapper /*extends BaseMapper<Role>*/ {
+public interface RoleMapper extends BaseMapper<Role> {
 
     /**
      * 通过中间表给用户添加角色

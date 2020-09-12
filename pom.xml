@@ -35,11 +35,11 @@
         </dependency>
 
         <!-- 引入mybatis-plus依赖 -->
-<!--        <dependency>-->
-<!--            <groupId>com.baomidou</groupId>-->
-<!--            <artifactId>mybatis-plus-boot-starter</artifactId>-->
-<!--            <version>3.3.2</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.2</version>
+        </dependency>
 
         <!-- 引入MySQL依赖 -->
         <dependency>
