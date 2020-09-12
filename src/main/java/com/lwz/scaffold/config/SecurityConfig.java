@@ -1,7 +1,14 @@
 package com.lwz.scaffold.config;
 
+import com.lwz.scaffold.filter.JwtAuthorizationFilter;
+import com.lwz.scaffold.jwt.JwtAuthenticationSuccessHandler;
+import com.lwz.scaffold.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,6 +25,24 @@ import java.io.PrintWriter;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /** 注入userService实例 */
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    private JwtAuthenticationSuccessHandler jwtAuthenticationSuccessHandler;
+
+    /**
+     * 用于设置用户权限继承
+     * @return
+     */
+    @Bean
+    RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        roleHierarchy.setHierarchy("ROLE_admin > ROLE_user");
+        return roleHierarchy;
+    }
+
     /**
      * 注入加密方法
      * @return
@@ -25,6 +50,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new PasswordConfig();
+    }
+
+    /**
+     * 此方法用来认证相关builder，用来配置全局的认证相关信息
+     * 它包含AuthenticationProvider、UserDetailsService：前者是认证服务提供者，后者是用户详情查询
+     * @param auth
+     * @throws Exception
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // 此方法不是基于内存，也不是基于 JdbcUserDetailsManager，而是使用自定义的 UserService。
+        // 通过userService作为参数
+        // .passwordEncoder()保证用户登录时使用md5对密码进行处理再与数据库中的密码比对
+        auth.userDetailsService(userService).passwordEncoder(new PasswordConfig());
     }
 
     /**
@@ -46,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/doLogin")
-//                .successHandler(jwtAuthenticationSuccessHandler)
+                .successHandler(jwtAuthenticationSuccessHandler)
                 .failureHandler((req, resp, e) -> {
                     resp.setContentType("application/json;charset=utf-8");
                     PrintWriter out = resp.getWriter();
@@ -78,9 +117,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 )
                 .and()
                 // 使用jwt之后，不使用session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 // 添加JWT过滤器 除已配置的其它请求都需经过此过滤器
-//                .addFilter(new JwtAuthorizationFilter(authenticationManager()));
+                .addFilter(new JwtAuthorizationFilter(authenticationManager()));
     }
 }
