@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HelloController {
+
     @GetMapping("/hello")
     public String hello() {
         return "hello";
@@ -24,4 +25,5 @@ public class HelloController {
     public String user() {
         return "user";
     }
+
 }
