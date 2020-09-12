@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 用于测试SpringSecurity认证、授权功能Controller
  * @author Lw中
  * @date 2020/8/26 17:31
  */
