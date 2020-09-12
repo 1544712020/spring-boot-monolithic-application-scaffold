@@ -1,7 +1,7 @@
 package com.lwz.scaffold.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//import com.baomidou.mybatisplus.core.metadata.IPage;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lwz.scaffold.dao.RoleMapper;
 import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.RoleVo;
@@ -55,31 +55,31 @@ public class RoleService {
         return i;
     }
 
-    /**
-     * 调用的是mybatisPlus提供的删除方法
-     * @param rid
-     * @return
-     */
-    public int deleteRoleById(int rid) {
-        int i = roleMapper.deleteById(rid);
-        return i;
-    }
-
-    /**
-     * 调用的是mybatisPlus提供的分页查询方法
-     * @param current
-     * @param size
-     * @return
-     */
-    public RoleVo queryList(Integer current, Integer size) {
-        RoleVo roleVo = new RoleVo();
-        IPage<Role> page = new Page<>(current, size);
-        roleMapper.selectPage(page, null);
-        roleVo.setCurrent(current);
-        roleVo.setSize(size);
-        roleVo.setTotal(page.getTotal());
-        roleVo.setRoleList(page.getRecords());
-        return roleVo;
-    }
+//    /**
+//     * 调用的是mybatisPlus提供的删除方法
+//     * @param rid
+//     * @return
+//     */
+//    public int deleteRoleById(int rid) {
+//        int i = roleMapper.deleteById(rid);
+//        return i;
+//    }
+//
+//    /**
+//     * 调用的是mybatisPlus提供的分页查询方法
+//     * @param current
+//     * @param size
+//     * @return
+//     */
+//    public RoleVo queryList(Integer current, Integer size) {
+//        RoleVo roleVo = new RoleVo();
+//        IPage<Role> page = new Page<>(current, size);
+//        roleMapper.selectPage(page, null);
+//        roleVo.setCurrent(current);
+//        roleVo.setSize(size);
+//        roleVo.setTotal(page.getTotal());
+//        roleVo.setRoleList(page.getRecords());
+//        return roleVo;
+//    }
 
 }

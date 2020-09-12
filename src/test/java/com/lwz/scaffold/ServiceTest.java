@@ -1,7 +1,7 @@
 package com.lwz.scaffold;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//import com.baomidou.mybatisplus.core.metadata.IPage;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.RoleVo;
 import com.lwz.scaffold.service.RoleService;
@@ -40,15 +40,15 @@ public class ServiceTest {
     public void testRole() {
         List<Role> roles = roleService.getRolesByUid(10);
         System.out.println(roles.get(0));
-        // 测试mybatisPlus提供的删除方法
-        int i = roleService.deleteRoleById(3);
-        System.out.println(i);
-        // 测试mybatisPlus提供的分页查询方法
-        RoleVo roleVo = roleService.queryList(0, 2);
-        List<Role> roleList = roleVo.getRoleList();
-        for (int j = 0; j < roleList.size(); j++) {
-            System.out.println(roleList.get(j));
-        }
+//        // 测试mybatisPlus提供的删除方法
+//        int i = roleService.deleteRoleById(3);
+//        System.out.println(i);
+//        // 测试mybatisPlus提供的分页查询方法
+//        RoleVo roleVo = roleService.queryList(0, 2);
+//        List<Role> roleList = roleVo.getRoleList();
+//        for (int j = 0; j < roleList.size(); j++) {
+//            System.out.println(roleList.get(j));
+//        }
     }
 
 }

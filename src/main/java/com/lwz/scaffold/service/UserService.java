@@ -1,9 +1,14 @@
 package com.lwz.scaffold.service;
 
+import com.lwz.scaffold.config.PasswordConfig;
 import com.lwz.scaffold.dao.RoleMapper;
 import com.lwz.scaffold.dao.UserMapper;
+import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,13 +21,53 @@ import java.util.List;
  */
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     UserMapper userMapper;
 
     @Autowired
     RoleMapper roleMapper;
+
+    @Autowired
+    PasswordConfig passwordConfig;
+
+    /**
+     * 该方法被configure方法里面auth.userDetailsService(userService)的参数
+     * 会将用户传入的用户名获取
+     * @param username
+     * @return
+     * @throws UsernameNotFoundException
+     */
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 查询用户信息
+        User user = userMapper.findUserByUsername(username);
+
+        if (user.getAccountNonLocked1() ==1) {
+            user.setAccountNonLocked(true);
+        }
+        if (user.getAccountNonExpired1() ==1) {
+            user.setAccountNonExpired(true);
+        }
+        if (user.getEnabled1() ==1) {
+            user.setEnabled(true);
+        }
+        if (user.getCredentialsNonExpired1() ==1) {
+            user.setCredentialsNonExpired(true);
+        }
+        System.out.println(user.getUsername());
+        if (user == null) {
+            throw new UsernameNotFoundException("用户不存在");
+        }
+
+        // 获取用户的角色信息
+        List<Role> roles = roleMapper.getRolesByUid(user.getId());
+        user.setRoles(roles);
+
+        // 返回用户信息
+        return user;
+    }
 
     /**
      * @Cacheable：表示该方法的返回结果需要缓存起来
@@ -53,5 +98,7 @@ public class UserService {
         List<User> users = userMapper.findAll();
         return users;
     }
+
+
 
 }
