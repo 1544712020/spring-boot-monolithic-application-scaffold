@@ -1,7 +1,5 @@
 package com.lwz.scaffold;
 
-//import com.baomidou.mybatisplus.core.metadata.IPage;
-//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.RoleVo;
 import com.lwz.scaffold.service.RoleService;
