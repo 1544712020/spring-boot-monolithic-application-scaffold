@@ -75,7 +75,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/roleList", method = RequestMethod.GET)
-    public List<Role> queryListRole(Integer current, Integer size) {
+    public List<Role> queryListRole(int current, int size) {
         RoleVo roleVo = roleService.queryList(current, size);
         List<Role> roleList = roleVo.getRoleList();
         return roleList;
