@@ -87,10 +87,24 @@ public class UserService implements UserDetailsService {
      * @return
      */
     public int addUser(User user) {
+        User userByUsername = userMapper.findUserByUsername(user.getUsername());
+        if (userByUsername != null) {
+            return 0;
+        }
+        user.setPassword(passwordConfig.encode(user.getPassword()));
+        user.setAccountNonExpired1(1);
+        user.setAccountNonLocked1(1);
+        user.setCredentialsNonExpired1(1);
+        user.setEnabled1(1);
+        int i = userMapper.addUser(user);
+        System.out.println(user.getId()+user.getUsername());
         String[] str = {"1"};
         int i1 = roleMapper.addUserRole(user.getId(), str);
-        int i2 = userMapper.addUser(user);
-        return i2;
+        if (i1 == i) {
+            return i;
+        } else {
+            return 2;
+        }
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
