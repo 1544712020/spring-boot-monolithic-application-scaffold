@@ -74,8 +74,8 @@ public class RoleController {
      * @param size
      * @return
      */
-    @RequestMapping(value = "/roleList", method = RequestMethod.GET)
-    public List<Role> queryListRole(int current, int size) {
+    @RequestMapping(value = "/roleList/{current}/{size}", method = RequestMethod.GET)
+    public List<Role> queryListRole(@PathVariable("current") int current, @PathVariable("size") int size) {
         RoleVo roleVo = roleService.queryList(current, size);
         List<Role> roleList = roleVo.getRoleList();
         return roleList;
