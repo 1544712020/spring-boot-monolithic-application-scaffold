@@ -24,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User implements Serializable, UserDetails {
 
-    private Integer id;
+    private int id;
     private String username;
     private String password;
     private boolean accountNonExpired;
