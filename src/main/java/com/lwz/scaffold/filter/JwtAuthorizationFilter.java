@@ -40,8 +40,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         SecurityContextHolder.getContext().setAuthentication(getAuthentication(tokenHeader));
         super.doFilterInternal(request, response, chain);
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println("header"+ SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
-        System.out.println("header"+ SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString());
+//        System.out.println("header"+ SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+//        System.out.println("header"+ SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString());
 
 
     }
