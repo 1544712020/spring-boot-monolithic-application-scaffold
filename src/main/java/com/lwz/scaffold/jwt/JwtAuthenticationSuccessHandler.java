@@ -40,8 +40,8 @@ public class JwtAuthenticationSuccessHandler extends SavedRequestAwareAuthentica
 
 
             String token = JwtTokenUtils.createToken(user.getUsername(), role);
-            System.out.println("role："+role);
-            System.out.println("token：" + token);
+//            System.out.println("role："+role);
+//            System.out.println("token：" + token);
 
             //  String token = JwtTokenUtils.createToken(jwtUser.getUsername(), false);
             // 返回创建成功的token
