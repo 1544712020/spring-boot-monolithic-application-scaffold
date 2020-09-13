@@ -5,9 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.lwz.scaffold.entity.User;
 import com.lwz.scaffold.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +21,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/getAllUsers")
+    /**
+     * 分页插件分页查询接口
+     * @return
+     */
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         //  创建Page对象，将page，limit参数传入，必须位于从数据库查询数据的语句之前，否则不生效
         Page page= PageHelper.startPage(2, 2);
@@ -35,6 +37,28 @@ public class UserController {
         long total = page.getTotal();
         System.out.println(total);
         return allUser;
+    }
+
+    /**
+     * 通过用户名查询用户信息
+     * @param username
+     * @return
+     */
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public User findUser(@PathVariable("username") String username) {
+        User user = userService.findUserByUsername(username);
+        return user;
+    }
+
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    public int addUser(User user) {
+        int i = userService.addUser(user);
+        return i;
     }
 
 }
