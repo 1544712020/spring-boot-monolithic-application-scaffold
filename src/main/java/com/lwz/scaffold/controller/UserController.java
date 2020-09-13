@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         //  创建Page对象，将page，limit参数传入，必须位于从数据库查询数据的语句之前，否则不生效
-        Page page= PageHelper.startPage(2, 2);
+        Page page= PageHelper.startPage(1, 2);
         //  ASC是根据id 正向排序，DESC是反向排序
         PageHelper.orderBy("id ASC");
         // 从数据库查询，这里返回的的allUser就已经分页成功了
@@ -36,6 +36,10 @@ public class UserController {
         // 获取查询记录总数，必须位于从数据库查询数据的语句之后，否则不生效
         long total = page.getTotal();
         System.out.println(total);
+        /**
+         * LWZ TODO : 2020/9/13 pageHelper
+         * 分页查询返回时报错
+         */
         return allUser;
     }
 
