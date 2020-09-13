@@ -4,6 +4,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.lwz.scaffold.entity.User;
 import com.lwz.scaffold.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,7 @@ import java.util.List;
  * @date 2020/9/11 19:56
  */
 
+@Api("用户接口")
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -25,6 +29,7 @@ public class UserController {
      * 分页插件分页查询接口
      * @return
      */
+    @ApiOperation(value = "分页查询用户数据", notes = "使用PageHelper插件完成分页程查询")
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         //  创建Page对象，将page，limit参数传入，必须位于从数据库查询数据的语句之前，否则不生效
@@ -48,6 +53,8 @@ public class UserController {
      * @param username
      * @return
      */
+    @ApiOperation(value = "查询用户信息")
+    @ApiImplicitParam(name = "username", value = "用户姓名")
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public User findUser(@PathVariable("username") String username) {
         User user = userService.findUserByUsername(username);
@@ -59,6 +66,8 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation(value = "添加用户")
+    @ApiImplicitParam(name = "user", value = "用户实体类")
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public int addUser(User user) {
         int i = userService.addUser(user);

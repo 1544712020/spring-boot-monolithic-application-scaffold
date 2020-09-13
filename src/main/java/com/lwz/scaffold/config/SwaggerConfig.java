@@ -22,7 +22,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cn.lwz.restful.controller"))
+                /* 配置要生成文档的包名 */
+                .apis(RequestHandlerSelectors.basePackage("com.lwz.scaffold.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
