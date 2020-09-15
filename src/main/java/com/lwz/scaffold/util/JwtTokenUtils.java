@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * 用于创建token信息
+ * 用于创建token信息类
  * @author Lw中
  * @date 2020/9/1 16:27
  */
