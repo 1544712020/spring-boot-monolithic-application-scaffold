@@ -5,7 +5,7 @@
 
 ![实用技术思维导图](https://images.gitee.com/uploads/images/2020/0917/203344_5e71bd55_6533994.png "屏幕截图.png")
 | 技术 :tw-1f51c:   |  说明  :tw-1f4dd: |
-|---|---|
+|-------|-------|
 |  SpringBoot  |  容器+MVC框架 |
 |  SpringSecurity | 认证和授权框架|
 | MyBatis  |  ORM框架 |
