@@ -20,3 +20,5 @@
 | PageHelper	  | MyBatis物理分页插件  |
 | Swagger-UI	 | 文档生成工具 |
 | fastjson	 | JSON解析库 |
+
+目前已完成大部分技术的相关整合，除了消息队列(RabbitMQ)以及搜索引擎(Elasticsearch)。其余的技术都完成了最基本的配置和整合，因为并没有比较复杂的业务背景所以对于入门springboot的新手来说是比较容易的。
