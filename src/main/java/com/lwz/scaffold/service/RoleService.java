@@ -6,6 +6,8 @@ import com.lwz.scaffold.dao.RoleMapper;
 import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.RoleVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,7 @@ import java.util.List;
  * @date 2020/9/11 17:44
  */
 
+@CacheConfig(cacheNames = "roles")
 @Service
 public class RoleService {
 
@@ -34,10 +37,12 @@ public class RoleService {
     }
 
     /**
-     *
+     *  @Cacheable：表示该方法的返回结果需要缓存起来
+     *  #p0：表示传入的第一个参数作为redis的key（使用el表达式来指定key）
      * @param uid
      * @return
      */
+    @Cacheable(key = "#p0")
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public List<Role> getRolesByUid(int uid) {
         List<Role> roles = roleMapper.getRolesByUid(uid);
