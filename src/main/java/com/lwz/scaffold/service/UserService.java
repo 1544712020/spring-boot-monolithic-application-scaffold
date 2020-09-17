@@ -6,6 +6,8 @@ import com.lwz.scaffold.dao.UserMapper;
 import com.lwz.scaffold.entity.Role;
 import com.lwz.scaffold.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,8 +20,10 @@ import java.util.List;
 /**
  * @author Lw中
  * @date 2020/9/11 17:44
+ * @CacheConfig：缓存公共配置
  */
 
+@CacheConfig(cacheNames = "users")
 @Service
 public class UserService implements UserDetailsService {
 
@@ -29,6 +33,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     RoleMapper roleMapper;
 
+    // 密码配置器
     @Autowired
     PasswordConfig passwordConfig;
 
@@ -71,10 +76,11 @@ public class UserService implements UserDetailsService {
 
     /**
      * @Cacheable：表示该方法的返回结果需要缓存起来
-     * #p0：表示传入的第一个参数作为redis的key
+     * #p0：表示传入的第一个参数作为redis的key（使用el表达式来指定key）
      * @param username
      * @return
      */
+    @Cacheable(key = "#p0")
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public User findUserByUsername(String username) {
         User user = userMapper.findUserByUsername(username);
