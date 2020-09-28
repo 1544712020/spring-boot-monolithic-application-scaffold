@@ -26,11 +26,13 @@ public class ControllerTest {
 
     @Test
     public void testAddUser() {
-        User user = new User();
-        user.setUsername("李白");
-        user.setPassword("abc");
-        int i = userService.addUser(user);
-        System.out.println(i);
+//        User user = new User();
+//        user.setUsername("李清照");
+//        user.setPassword("123");
+//        int i = userService.addUser(user);
+//        System.out.println(i);
+        User user = userService.findUserByUsername("李清照");
+        System.out.println(user.getUsername());
     }
 
 }

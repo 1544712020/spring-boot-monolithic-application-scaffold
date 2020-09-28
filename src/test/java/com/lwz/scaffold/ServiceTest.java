@@ -36,7 +36,7 @@ public class ServiceTest {
 
     @Test
     public void testRole() {
-        List<Role> roles = roleService.getRolesByUid(10);
+        List<Role> roles = roleService.getRolesByUid(5);
         System.out.println(roles.get(0));
         // 测试mybatisPlus提供的删除方法
         int i = roleService.deleteRoleById(3);
