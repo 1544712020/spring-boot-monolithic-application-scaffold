@@ -11,7 +11,7 @@
  Target Server Version : 50727
  File Encoding         : 65001
 
- Date: 12/09/2020 19:35:07
+ Date: 01/10/2020 23:17:20
 */
 
 SET NAMES utf8mb4;
@@ -45,7 +45,7 @@ CREATE TABLE `role`  (
   `name_zh` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
@@ -53,7 +53,6 @@ CREATE TABLE `role`  (
 INSERT INTO `role` VALUES (1, 'ROLE_admin', '管理员');
 INSERT INTO `role` VALUES (2, 'ROLE_user', '普通用户');
 INSERT INTO `role` VALUES (4, '微软', '微软微软');
-INSERT INTO `role` VALUES (5, '微软微软', '仍然');
 
 -- ----------------------------
 -- Table structure for user
@@ -68,39 +67,43 @@ CREATE TABLE `user`  (
   `credentials_non_expired` int(32) NULL DEFAULT NULL,
   `enabled` int(32) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (7, '哈哈4', '900150983cd24fb0d6963f7d28e17f72', 1, 1, 1, 1);
-INSERT INTO `user` VALUES (8, '哈哈5', '900150983cd24fb0d6963f7d28e17f72', 1, 1, 1, 1);
-INSERT INTO `user` VALUES (9, 'lwz', '202cb962ac59075b964b07152d234b70', 1, 1, 1, 1);
-INSERT INTO `user` VALUES (10, 'Lw中', '123', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (1, '哈哈4', '900150983cd24fb0d6963f7d28e17f72', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (2, '哈哈5', '900150983cd24fb0d6963f7d28e17f72', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (3, 'lwz', '202cb962ac59075b964b07152d234b70', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (5, '白居易', '900150983cd24fb0d6963f7d28e17f72', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (7, '李清照', '202cb962ac59075b964b07152d234b70', 1, 1, 1, 1);
+INSERT INTO `user` VALUES (8, '李四', '39ad0a9cf7da2ba591f53828e318443a', 1, 1, 1, 1);
 
 -- ----------------------------
 -- Table structure for user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role`  (
-  `id` int(32) NOT NULL AUTO_INCREMENT,
-  `user_id` int(32) NULL DEFAULT NULL,
-  `role_id` int(32) NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_role_ibfk_1`(`user_id`) USING BTREE,
-  INDEX `user_role_ibfk_2`(`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  INDEX `u_id`(`user_id`) USING BTREE,
+  INDEX `r_id`(`role_id`) USING BTREE,
+  CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-INSERT INTO `user_role` VALUES (11, 0, 2);
-INSERT INTO `user_role` VALUES (12, 0, 2);
-INSERT INTO `user_role` VALUES (13, 0, 2);
-INSERT INTO `user_role` VALUES (14, 7, 2);
-INSERT INTO `user_role` VALUES (15, 8, 2);
-INSERT INTO `user_role` VALUES (16, 9, 1);
-INSERT INTO `user_role` VALUES (17, 10, 2);
+INSERT INTO `user_role` VALUES (1, 1, 1);
+INSERT INTO `user_role` VALUES (2, 2, 1);
+INSERT INTO `user_role` VALUES (3, 3, 1);
+INSERT INTO `user_role` VALUES (4, 3, 2);
+INSERT INTO `user_role` VALUES (5, 5, 2);
+INSERT INTO `user_role` VALUES (6, 7, 1);
+INSERT INTO `user_role` VALUES (7, 8, 2);
 
 -- ----------------------------
 -- Table structure for users
