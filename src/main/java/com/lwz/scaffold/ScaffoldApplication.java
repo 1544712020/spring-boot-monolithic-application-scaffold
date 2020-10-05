@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author Lw中
  */
 @EnableCaching
+/** 导入redis配置 */
 @Import(RedisConfig.class)
 @EnableSwagger2
 @SpringBootApplication
