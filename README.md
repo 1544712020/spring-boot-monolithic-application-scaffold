@@ -26,5 +26,5 @@
 #### 多模块项目介绍 :tw-1f4ce:  :tw-1f4ce:  :tw-1f4ce: 
 
 多模块项目概况图如下：
-![输入图片说明](https://images.gitee.com/uploads/images/2020/1002/001519_2a8cc5c4_6533994.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/1020/164909_48ac5f31_6533994.png "屏幕截图.png")
 关于maven中的聚合和继承可以看这篇博客：[SpringBoot+Maven搭建多模块项目](https://blog.csdn.net/weixin_43894879/article/details/108829354)，通过这样的多模块构建以及优化让项目更易于管理维护。
