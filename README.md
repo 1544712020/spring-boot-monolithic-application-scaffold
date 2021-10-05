@@ -1,7 +1,7 @@
 # SpringBoot-Monolithic-Application-Scaffold
 
 #### 介绍 :tw-1f4ce:  :tw-1f4ce:  :tw-1f4ce: 
-此项目用于搭建一个通用的SpringBoot单体应用脚手架，脚手架集成了常用的框架以及中间件，还有一些常用的常用的工具类架包。完成以后不用再重复的搭建SpringBoot单体应用的基础架构，可以大大提升开发效率。  :tw-1f4aa:  :tw-1f4aa:  :tw-1f4aa: 
+此项目用于搭建一个通用的SpringBoot单体应用脚手架，脚手架集成了常用的框架以及中间件，还有一些常用的常用的工具类架包。
 
 ![实用技术思维导图](https://images.gitee.com/uploads/images/2020/0917/203344_5e71bd55_6533994.png "屏幕截图.png")
 | 技术 :tw-1f51c:   |  说明  :tw-1f4dd: |
@@ -21,9 +21,7 @@
 | Swagger-UI	 | 文档生成工具 |
 | fastjson	 | JSON解析库 |
 
-目前已完成大部分技术的相关整合，除了搜索引擎(Elasticsearch)技术没有整合之外 :tw-1f480:  :tw-1f480: 。其余的技术都完成了最基本的配置和整合。因为并没有比较复杂的业务背景所以对于入门 :tw-1f605:  :tw-1f605: springboot的新手来说是比较容易的。现已将单体应用变成多模块应用，使得项目更易于管理和维护 :tw-1f4af:  :tw-1f4af: 。
-
-#### 多模块项目介绍 :tw-1f4ce:  :tw-1f4ce:  :tw-1f4ce: 
+#### 多模块项目介绍 :
 
 多模块项目概况图如下：
 ![输入图片说明](https://images.gitee.com/uploads/images/2020/1020/164909_48ac5f31_6533994.png "屏幕截图.png")
